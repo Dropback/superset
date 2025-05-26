@@ -21,7 +21,7 @@ from superset.dashboards.filters import DashboardAccessFilter
 
 
 class DashboardMixin:  # pylint: disable=too-few-public-methods
-    list_title = _("Dashboards")
+    list_title = _("Dropback Dashboards")
     show_title = _("Show Dashboard")
     add_title = _("Add Dashboard")
     edit_title = _("Edit Dashboard")
