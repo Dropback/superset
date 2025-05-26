@@ -34,6 +34,7 @@ import {
   MenuData,
 } from 'src/types/bootstrapTypes';
 import RightMenu from './RightMenu';
+import dropbackLogo from 'src/assets/branding/dropback-long-black.png';
 
 interface MenuProps {
   data: MenuData;
@@ -268,11 +269,11 @@ export function Menu({
           >
             {isFrontendRoute(window.location.pathname) ? (
               <GenericLink className="navbar-brand" to={brand.path}>
-                <img src={brand.icon} alt={brand.alt} />
+                <img src={dropbackLogo} alt={brand.alt} />
               </GenericLink>
             ) : (
               <a className="navbar-brand" href={brand.path} tabIndex={-1}>
-                <img src={brand.icon} alt={brand.alt} />
+                <img src={dropbackLogo} alt={brand.alt} />
               </a>
             )}
           </Tooltip>
