@@ -1,0 +1,43 @@
+name: Publish Dropback Docker Container
+
+on:
+  push:
+    branches: ['master']
+
+jobs:
+  build_and_publish_platform_containers:
+    name: Build and publish platform containers
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-tags: true
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build the docker image
+        env:
+          BUILD_PLATFORM: amd64
+        run: |
+          APP_VERSION="$(git name-rev --tags --name-only $(git rev-parse HEAD) | head -n 1 | sed 's/\^0//')"
+          GIT_SHA="$(git rev-parse HEAD)"
+
+          docker build \
+            -f ./Dockerfile \
+            --progress=plain \
+            -t "dropbackhq/superset-dropback-$BUILD_PLATFORM:latest" \
+            -t "dropbackhq/superset-dropback-$BUILD_PLATFORM:$GIT_SHA" \
+            -t "dropbackhq/superset-dropback-$BUILD_PLATFORM:$APP_VERSION" \
+            .
+
+      - name: Push the docker image to DockerHub
+        run: docker push "dropbackhq/superset-dropback-$BUILD_PLATFORM:latest"
+        env:
+          BUILD_PLATFORM: amd64
