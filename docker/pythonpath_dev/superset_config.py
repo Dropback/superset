@@ -103,7 +103,7 @@ CORS_OPTIONS = {
     "supports_credentials": True,
     "allow_headers": ["*"],
     "resources": ["*"],
-    "origins": ["*"]
+    "origins": ["http://northwestern.localhost:3000"]
 }
 
 FEATURE_FLAGS = {"ALERT_REPORTS": True, "EMBEDDED_SUPERSET": True}
