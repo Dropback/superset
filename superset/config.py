@@ -822,8 +822,13 @@ STORE_CACHE_KEYS_IN_METADATA_DB = False
 # CORS Options
 # NOTE: enabling this requires installing the cors-related python dependencies
 # `pip install .[cors]` or `pip install apache_superset[cors]`, depending
-ENABLE_CORS = False
-CORS_OPTIONS: dict[Any, Any] = {}
+ENABLE_CORS = True
+CORS_OPTIONS: dict[Any, Any] = {
+    "supports_credentials": True,
+    "allow_headers": ["*"],
+    "resources": ["*"],
+    "origins": ["*","http://northwestern.localhost:3000"]
+}
 
 # Sanitizes the HTML content used in markdowns to allow its rendering in a safe manner.
 # Disabling this option is not recommended for security reasons. If you wish to allow
