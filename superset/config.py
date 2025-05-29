@@ -822,7 +822,7 @@ STORE_CACHE_KEYS_IN_METADATA_DB = False
 # CORS Options
 # NOTE: enabling this requires installing the cors-related python dependencies
 # `pip install .[cors]` or `pip install apache_superset[cors]`, depending
-ENABLE_CORS = True
+ENABLE_CORS = False
 CORS_OPTIONS: dict[Any, Any] = {
     "supports_credentials": True,
     "allow_headers": ["*"],
