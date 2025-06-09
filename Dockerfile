@@ -250,6 +250,7 @@ RUN --mount=type=cache,target=${SUPERSET_HOME}/.cache/uv \
 
 RUN uv pip install .[postgres]
 RUN uv pip install apache_superset[cors]
+RUN uv pip install flask_cors
 RUN python -m compileall /app/superset
 
 USER superset
