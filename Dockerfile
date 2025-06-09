@@ -249,6 +249,7 @@ RUN --mount=type=cache,target=${SUPERSET_HOME}/.cache/uv \
     uv pip install .
 
 RUN uv pip install .[postgres]
+RUN uv pip install apache_superset[cors]
 RUN python -m compileall /app/superset
 
 USER superset
