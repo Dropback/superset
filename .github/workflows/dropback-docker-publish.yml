@@ -32,6 +32,7 @@ jobs:
           docker build \
             -f ./Dockerfile \
             --progress=plain \
+            --no-cache \
             -t "dropbackhq/superset-dropback-$BUILD_PLATFORM:latest" \
             -t "dropbackhq/superset-dropback-$BUILD_PLATFORM:$GIT_SHA" \
             -t "dropbackhq/superset-dropback-$BUILD_PLATFORM:$APP_VERSION" \
